@@ -32,9 +32,9 @@ jobs:
       working-directory: ./tweetnacl  # Set the working directory to the 'tweetnacl' folder
       run: cmake --build build  # Build the project in the 'tweetnacl/build' directory
 
-    - name: List build directory (for debugging)
-      working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
-      run: ls -R  # List all files recursively to debug the build output
+    # - name: List build directory (for debugging)
+    #   working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
+    #   run: ls -R  # List all files recursively to debug the build output
 
     - name: Run tests
       working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
