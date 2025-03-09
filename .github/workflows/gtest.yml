@@ -16,18 +16,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3  # Check out the repository code
 
-    - name: Set up CMake
+    - name: Set up CMake and GTest
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake
-
-    - name: Install GTest
-      run: |
-        sudo apt-get install -y libgtest-dev
-        cd /usr/src/gtest
-        sudo cmake CMakeLists.txt
-        sudo make
-        sudo cp *.a /usr/lib
+        sudo apt-get install -y cmake libgtest-dev build-essential
 
     - name: Create build directory
       run: mkdir -p tweetnacl/build  # Create a 'build' directory inside the 'tweetnacl' folder
