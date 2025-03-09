@@ -1,0 +1,45 @@
+name: GTest CI
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull requests targeting the main branch
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Check out the repository code
+
+    - name: Set up CMake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake
+
+    - name: Install GTest
+      run: |
+        sudo apt-get install -y libgtest-dev
+        cd /usr/src/gtest
+        sudo cmake CMakeLists.txt
+        sudo make
+        sudo cp *.a /usr/lib
+
+    - name: Create build directory
+      run: mkdir -p tweetnacl/build  # Create a 'build' directory inside the 'tweetnacl' folder
+
+    - name: Configure CMake
+      working-directory: ./tweetnacl  # Set the working directory to the 'tweetnacl' folder
+      run: cmake -S . -B build  # Configure the tweetnacl in the 'tweetnacl/build' directory
+
+    - name: Build tweetnacl
+      working-directory: ./tweetnacl  # Set the working directory to the 'tweetnacl' folder
+      run: cmake --build build  # Build the tweetnacl in the 'tweetnacl/build' directory
+
+    - name: Run tests
+      working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
+      run: ./tweetnacl/build/tests/test_tweetnacl  # Replace with the path to your test executable
