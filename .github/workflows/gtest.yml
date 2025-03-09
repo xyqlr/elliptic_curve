@@ -26,12 +26,16 @@ jobs:
 
     - name: Configure CMake
       working-directory: ./tweetnacl  # Set the working directory to the 'tweetnacl' folder
-      run: cmake -S . -B build  # Configure the tweetnacl in the 'tweetnacl/build' directory
+      run: cmake -S . -B build  # Configure the project in the 'tweetnacl/build' directory
 
-    - name: Build tweetnacl
+    - name: Build project
       working-directory: ./tweetnacl  # Set the working directory to the 'tweetnacl' folder
-      run: cmake --build build  # Build the tweetnacl in the 'tweetnacl/build' directory
+      run: cmake --build build  # Build the project in the 'tweetnacl/build' directory
+
+    - name: List build directory (for debugging)
+      working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
+      run: ls -R  # List all files recursively to debug the build output
 
     - name: Run tests
       working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
-      run: ./tweetnacl/build/tests/test_tweetnacl  # Replace with the path to your test executable
+      run: ./tests/test_tweetnacl  # Run the test executable
