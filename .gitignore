@@ -1,4 +1,4 @@
 temp/*
 *.pyc
-tweetnacl/build/*
+build/*
 

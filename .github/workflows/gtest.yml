@@ -22,20 +22,16 @@ jobs:
         sudo apt-get install -y cmake libgtest-dev build-essential
 
     - name: Create build directory
-      run: mkdir -p tweetnacl/build  # Create a 'build' directory inside the 'tweetnacl' folder
+      run: mkdir -p build  
 
     - name: Configure CMake
-      working-directory: ./tweetnacl  # Set the working directory to the 'tweetnacl' folder
-      run: cmake -S . -B build  # Configure the project in the 'tweetnacl/build' directory
+      working-directory: .  
+      run: cmake -S . -B build  
 
     - name: Build project
-      working-directory: ./tweetnacl  # Set the working directory to the 'tweetnacl' folder
-      run: cmake --build build  # Build the project in the 'tweetnacl/build' directory
-
-    # - name: List build directory (for debugging)
-    #   working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
-    #   run: ls -R  # List all files recursively to debug the build output
+      working-directory: .  
+      run: cmake --build build  
 
     - name: Run tests
-      working-directory: ./tweetnacl/build  # Set the working directory to the 'tweetnacl/build' folder
+      working-directory: ./build  
       run: ./tests/test_tweetnacl  # Run the test executable
