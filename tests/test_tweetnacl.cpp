@@ -1,4 +1,7 @@
-#include "tweetnacl.h"
+extern "C" {
+    #include "tweetnacl.h"
+    #include "randombytes.h"
+}
 #include <gtest/gtest.h>
 
 TEST(TweetNaCl, CryptoBoxWorks) {
