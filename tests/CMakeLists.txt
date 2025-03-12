@@ -8,9 +8,10 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(test_tweetnacl test_tweetnacl.cpp main.cpp)
+file(GLOB SOURCES test_tweetnacl.cpp main.cpp test_randombytes.cpp)
+add_executable(test_tweetnacl ${SOURCES})
 target_include_directories(test_tweetnacl PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(test_tweetnacl PRIVATE tweetnacl gtest gtest_main)
+target_link_libraries(test_tweetnacl PRIVATE tweetnacl gtest)
 
 include(GoogleTest)
 gtest_discover_tests(test_tweetnacl)

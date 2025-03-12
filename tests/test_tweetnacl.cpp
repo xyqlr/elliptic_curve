@@ -4,7 +4,7 @@ extern "C" {
 }
 #include <gtest/gtest.h>
 
-TEST(TweetNaCl, CryptoBoxWorks) {
+TEST(TweetNaCl, box_keypair) {
     unsigned char pk[32], sk[32];
     unsigned char nonce[24] = {0};  
     unsigned char message[32] = "Hello, NaCl!";
