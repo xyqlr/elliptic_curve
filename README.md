@@ -12,9 +12,8 @@ ECC is widely used in various applications, including:
 
 ## TweetNaCl
 
-[TweetNaCl](https://tweetnacl.cr.yp.to/) is a small and portable crnyptographic library that provides high-level cryptographic operations, including public-key encryption, secret-key encryption, and hashing. It is a compact version of the NaCl (Networking and Cryptography Library) and is designed to be easy to use and secure. TweetNaCl is implemented in a minimalistic style, making it suitable for embedded systems and resource-constrained environments.
+[TweetNaCl](https://tweetnacl.cr.yp.to/) is a small and portable cryptographic library that provides high-level cryptographic operations, including public-key encryption, secret-key encryption, and hashing. It is a compact version of the NaCl (Networking and Cryptography Library) and is designed to be easy to use and secure. TweetNaCl is implemented in a minimalistic style, making it suitable for embedded systems and resource-constrained environments.
 
-For details about the implementation, please refer to the [tutorial](https://martin.kleppmann.com/papers/curve25519.pdf).
+For details about the implementation of [Curve25519](https://en.wikipedia.org/wiki/Curve25519), please refer to this [tutorial](https://martin.kleppmann.com/papers/curve25519.pdf).
 
-
-This repository adds some unit tests in gtest and tries to build some applications, including both in Python and c/c++.
+This repository provides unit tests using [GoogleTest](https://github.com/google/googletest) to help understand the algorithms implemented in TweetNaCl. Additionally, it includes applications built in both Python and C/C++.
